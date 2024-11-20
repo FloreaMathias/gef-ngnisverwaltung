@@ -13,10 +13,15 @@ class RowDetailsClick(RowDetailsClickTemplate):
 
     # Any code you write here will run before the form opens.
 
-  def Details_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    # get Form1
-    parent = self.parent.parent.parent.parent
-    zellennummer = self.item['zellennummer']
-    parent.repeating_panel_zellendetails.items = [{'haeftlingsnummer': 'TODO', 'einzug': 'TODO', 'auszug': 'TODO', 'haftdauer': 'TODO'},
-                                                  {'haeftlingsnummer': 'TODO1', 'einzug': 'TODO1', 'auszug': 'TODO1', 'haftdauer': 'TODO1'}]
+    def Details_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        parent = self.parent.parent.parent.parent 
+
+        zellennummer = self.item['zellennummer']
+
+        inmate_details = anvil.server.call('get_inmate_details', zellennummer)
+
+        if inmate_details:
+            parent.repeating_panel_zellendetails.items = inmate_details
+        else:
+            parent.repeating_panel_zellendetails.items = [{'haeftlingsnummer': 'Keine Daten gefunden', 'einzug': '', 'auszug': '', 'haftdauer': ''}]
