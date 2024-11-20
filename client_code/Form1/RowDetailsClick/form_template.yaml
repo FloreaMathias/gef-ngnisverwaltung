@@ -1,0 +1,8 @@
+components:
+- event_bindings: {click: Details_click}
+  layout_properties: {column: QUGEPZ}
+  name: Details
+  properties: {text: Details}
+  type: Button
+container: {type: DataRowPanel}
+is_package: true

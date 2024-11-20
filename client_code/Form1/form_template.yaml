@@ -1,0 +1,74 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'RNSAFG,RWCBGT'}
+    name: label_2
+    properties: {text: 'Gefängnisauswahl: '}
+    type: Label
+  - event_bindings: {change: gefaengnisse_drop_down_change}
+    layout_properties: {grid_position: 'SESDBL,FNRDPE'}
+    name: gefaengnisse_drop_down
+    properties: {}
+    type: DropDown
+  - components:
+    - layout_properties: {col_xs: 0, row: MCTUPJ, width_xs: 1}
+      name: label_3
+      properties: {bold: true, text: 'Direktor:'}
+      type: Label
+    - layout_properties: {col_xs: 1, row: MCTUPJ, width_xs: 2}
+      name: label_direktor
+      properties: {}
+      type: Label
+    - data_bindings: []
+      layout_properties: {col_xs: 3, row: MCTUPJ, width_xs: 2}
+      name: label_4
+      properties: {bold: true, text: 'Freie Zellen:'}
+      type: Label
+    - layout_properties: {col_xs: 5, row: MCTUPJ, width_xs: 3}
+      name: label_freie_zellen
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'RXADCD,PZEHAM'}
+    name: grid_panel_1
+    properties: {}
+    type: GridPanel
+  - components:
+    - name: repeating_zellen
+      properties: {item_template: Form1.RowDetailsClick}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'MKDXHE,CBPXRP'}
+    name: data_grid_zellen
+    properties:
+      columns:
+      - {data_key: zellennummer, id: JKSDUP, title: Zellennummer}
+      - {data_key: anzahl_häftlinge, id: VJQQOR, title: Anzahl Häftlinge}
+      - {data_key: details, id: QUGEPZ, title: Details}
+    type: DataGrid
+  - components:
+    - name: repeating_panel_zellendetails
+      properties: {item_template: Form1.RowTemplate4}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'ZLHHBD,VBKUSR'}
+    name: data_zellendetails
+    properties:
+      columns:
+      - {data_key: haeftlingsnummer, id: JKSDUP, title: Häftlingsnummer}
+      - {data_key: einzug, id: VJQQOR, title: Einzug}
+      - {data_key: auszug, id: OJLQEN, title: Auszug}
+      - {data_key: haftdauer, id: NEBUER, title: Haftdauer}
+    type: DataGrid
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: Gefängnisverwaltung}
+  type: Label
+container:
+  properties: {background: '', html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true
